@@ -2,7 +2,9 @@ package com.johnlewis.occo.mfd;
 
 import android.os.Bundle;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,15 +21,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.setWebViewClient(new WebViewClientImpl(getParent()));
+        webView.getSettings().setJavaScriptEnabled(true);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        webView.loadUrl("http://contact-centre-test3.project4.com");
+
+        FloatingActionButton fab = findViewById(R.id.fab_left);
+        BottomNavigationView nav = findViewById(R.id.nav_bar);
+        //nav.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                WebView webView = (WebView) findViewById(R.id.webview);
+               webView.loadUrl("http://contact-centre-test3.project4.com/dashboard/security");
+            }
+        });
+        FloatingActionButton fabr = findViewById(R.id.fab_right);
+        fabr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WebView webView = (WebView) findViewById(R.id.webview);
+                webView.loadUrl("http://contact-centre-test3.project4.com");
             }
         });
     }

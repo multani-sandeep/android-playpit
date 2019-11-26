@@ -1089,14 +1089,17 @@ id edit_query
 id end
 id enterAlways
 id enterAlwaysCollapsed
+id equal
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab
+id fab_left
+id fab_right
 id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstnum
 id fixed
 id forever
 id ghost_view
@@ -1127,6 +1130,7 @@ id mini
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id nav_bar
 id navigation_header_container
 id never
 id none
@@ -1134,6 +1138,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id operation
 id outline
 id packed
 id parallax
@@ -1145,6 +1150,8 @@ id pin
 id progress_circular
 id progress_horizontal
 id radio
+id result
+id resultMessage
 id right
 id right_icon
 id right_side
@@ -1167,6 +1174,7 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id secondnum
 id select_dialog_listview
 id selected
 id shortcut
@@ -1207,7 +1215,6 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
-id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1222,6 +1229,7 @@ id up
 id useLogo
 id view_offset_helper
 id visible
+id webview
 id withText
 id wrap
 id wrap_content
@@ -1274,6 +1282,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout content_main
+layout content_occowebview
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1301,6 +1310,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu menu_main
+menu menu_nav_buttons
 mipmap ic_launcher
 mipmap ic_launcher_round
 string abc_action_bar_home_description

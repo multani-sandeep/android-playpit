@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" android:windowSoftInputMode="adjustResize">
 
-    <include layout="@layout/content_occowebview" />
+    <include layout="@layout/content_main" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bar"

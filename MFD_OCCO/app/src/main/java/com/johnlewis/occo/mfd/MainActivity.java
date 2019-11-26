@@ -14,6 +14,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebView;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,11 +25,43 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webView = (WebView) findViewById(R.id.webview);
+//        TextView txtView = findViewById(R.id.textarea);
+
+        setRandomumber((TextView)findViewById(R.id.firstnum));
+        setRandomumber((TextView)findViewById(R.id.secondnum));
+
+        TextView operation = findViewById(R.id.operation);
+        operation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String operation = ((TextView)findViewById(R.id.operation)).getText().toString();
+                ((TextView)findViewById(R.id.operation)).setText(operation.equals("+")?"-":"+");
+            }
+        });
+
+        FloatingActionButton back = findViewById(R.id.fab_left);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRandomumber((TextView)findViewById(R.id.firstnum));
+                setRandomumber((TextView)findViewById(R.id.secondnum));
+                ((TextView)findViewById(R.id.resultMessage)).setText(">");
+            }
+        });
+        FloatingActionButton forward = findViewById(R.id.fab_right);
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calculate();
+            }
+        });
+
+        /*WebView webView = (WebView) findViewById(R.id.webview);
         webView.setWebViewClient(new WebViewClientImpl(getParent()));
         webView.getSettings().setJavaScriptEnabled(true);
 
-        webView.loadUrl("http://contact-centre-test3.project4.com");
+        //webView.loadUrl("http://contact-centre-test3.project4.com");
+        webView.loadUrl("https://www.yahoo.com");
 
         FloatingActionButton fab = findViewById(R.id.fab_left);
         BottomNavigationView nav = findViewById(R.id.nav_bar);
@@ -42,9 +78,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 WebView webView = (WebView) findViewById(R.id.webview);
-                webView.loadUrl("http://contact-centre-test3.project4.com");
+                webView.loadUrl("https://www.yahoo.com");
             }
         });
+        */
+    }
+
+    protected void calculate(){
+        int firstnum =  Integer.parseInt(((TextView)findViewById(R.id.firstnum)).getText().toString());
+        int secondnum =  Integer.parseInt(((TextView)findViewById(R.id.secondnum)).getText().toString());
+        int result =  Integer.parseInt(((TextView)findViewById(R.id.result)).getText().toString());
+
+        int resultInternal =firstnum+secondnum;
+
+        ((TextView)findViewById(R.id.resultMessage)).setText(
+                resultInternal == result? "Correct !":"Try again!"
+        );
+
+    }
+
+    protected void setRandomumber(TextView view){
+        int num = new Random().nextInt(100);
+        view.setText(""+num);
     }
 
     @Override
